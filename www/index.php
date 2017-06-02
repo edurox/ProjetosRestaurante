@@ -12,9 +12,9 @@
 	<?php require_once HTML_PATH . "/header.php"; ?>
 	<main>
 		<?php
-			$request = explode('/',$_SERVER['REQUEST_URI'])[3];
+			$request = explode('/',$_SERVER['REQUEST_URI'])[2];
 			if($request)
-				require_once "source/views/" .$request. ".php";
+				require_once "source/views/cliente/" .$request. ".php";
 			else
 				require_once "source/views/index.php";
 		?>
