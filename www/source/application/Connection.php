@@ -4,6 +4,6 @@ $user = "root";
 $pass = "root";
 $database = "projeto";
 
-// $con = new PDO("mysql:host=$host;dbname=$database", $user, $pass);
+$con = new PDO("mysql:host=$host;dbname=$database", $user, $pass);
 
 session_start();
