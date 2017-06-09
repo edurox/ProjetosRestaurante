@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 -- Banco de dados: `ProjetoRestaurante`
 --
 
+CREATE DATABASE IF NOT EXISTS `ProjetoRestaurante`;
+USE `ProjetoRestaurante`;
 -- --------------------------------------------------------
 
 --

@@ -1,5 +1,4 @@
 <?php
-  require_once __DIR__ . "/../../../source/application/DefinePath.php";
   require_once APP_PATH . "/Connection.php";
   require_once APP_PATH . "/Default.php";
 
@@ -18,13 +17,13 @@
     }
 
     public function cadastro() {
-      $host = "localhost";
-      $user = "root";
-      $pass = "";
-      $database = "ProjetoRestaurante";
+        $host = "localhost";
+        $user = "root";
+        $pass = "";
+        $database = "ProjetoRestaurante";
 
-      $con = new PDO("mysql:host=$host;dbname=$database", $user, $pass);
-      $count = $con->exec("INSERT INTO
+        $con = new PDO("mysql:host=$host;dbname=$database", $user, $pass);
+        $count = $con->exec("INSERT INTO
                           `Restaurante`(
                             `nome_restaurante`,
                             `CPF_CNPJ`,
@@ -39,6 +38,8 @@
                               '$this->telefone',
                               '$this->email')") or die(print_r($con->errorInfo(), true));
 
+
+        echo "Cadastro de $this->nome realizado com sucesso";
     }
 
 
@@ -63,7 +64,7 @@
   	}
 
   	public function setTelefone(){
-  		$this->telefone = $_POST['telefone'];InserirPessoa
+  		$this->telefone = $_POST['telefone'];
   	}
 
   	public function getEmail(){

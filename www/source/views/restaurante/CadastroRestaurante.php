@@ -12,12 +12,12 @@
 <body>
 	<?php require_once HTML_PATH . "/header.php"; ?>
 	<main class="container">
-    <form class="form-horizontal" role="form" method="post" action="valida-cadastro.php">
+    <form class="form-horizontal" role="form" method="post" action="index.php">
 
     	<div class="form-group">
-    		<label for="name" class="col-sm-5 control-label">Nome Completo</label>
+    		<label for="name" class="col-sm-5 control-label">Nome do Restaurante</label>
     		<div class="col-sm-10">
-    			<input type="text" class="form-control" id="name" name="name" placeholder="Nome Completo" value="">
+    			<input type="text" class="form-control" id="name" name="name" placeholder="Nome do Restaurante" value="">
     		</div>
     	</div>
 

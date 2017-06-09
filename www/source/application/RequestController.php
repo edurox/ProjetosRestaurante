@@ -56,7 +56,7 @@ class RequestController {
 	*	Utilizado em public/index.php para não incluir HTML(<head>,<body>).
 	*/
 	private function isHtmlContent() {
-		$cadastro = array_search('cadastro',$this->paramArray);
+		$cadastro = array_search('valida-cadastro',$this->paramArray);
 		$edicao   = array_search('edita',   $this->paramArray);
 		$remocao  = array_search('remove',  $this->paramArray);
 
