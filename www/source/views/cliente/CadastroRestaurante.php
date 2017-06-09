@@ -12,7 +12,8 @@
 <body>
 	<?php require_once HTML_PATH . "/header.php"; ?>
 	<main class="container">
-    <form class="form-horizontal" role="form" method="post" action="index.php">
+		<h2>Cadastro do Restaurante</h2>
+    <form class="form-control" role="form" method="post" action="valida-cadastro.php">
 
     	<div class="form-group">
     		<label for="name" class="col-sm-5 control-label">Nome do Restaurante</label>

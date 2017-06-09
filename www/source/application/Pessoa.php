@@ -1,23 +1,43 @@
 <?php
-  // inclui conexao
+  require_once __DIR__ . "/../../../source/application/DefinePath.php";
+  require_once APP_PATH . "/Connection.php";
+  require_once APP_PATH . "/Default.php";
 
   class Pessoa {
     private $nome, $cpf, $telefone, $email, $ender;
 
-    public __construct() {
+    public function __construct() {
 
       $this->setNome();
       $this->setCpf();
       $this->setTelefone();
       $this->setEmail();
       $this->setEnder();
+
+      //echo "noiado";
     }
 
     public function cadastro() {
-      // mysql
-    }
+      $host = "localhost";
+      $user = "root";
+      $pass = "";
+      $database = "ProjetoRestaurante";
 
-    public function remove() {
+      $con = new PDO("mysql:host=$host;dbname=$database", $user, $pass);
+      $count = $con->exec("INSERT INTO
+                          `Restaurante`(
+                            `nome_restaurante`,
+                            `CPF_CNPJ`,
+                            `endereco`,
+                            `telefone`,
+                            `email`
+                          )
+                            VALUES(
+                              '$this->nome',
+                              '$this->cpf',
+                              '$this->ender',
+                              '$this->telefone',
+                              '$this->email')") or die(print_r($con->errorInfo(), true));
 
     }
 
@@ -43,7 +63,7 @@
   	}
 
   	public function setTelefone(){
-  		$this->telefone = $_POST['telefone'];
+  		$this->telefone = $_POST['telefone'];InserirPessoa
   	}
 
   	public function getEmail(){
