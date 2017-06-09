@@ -1,3 +1,13 @@
+<?php
+    // require_once DATABASE_PATH . '/Connection.php';
+
+    /**
+     *  Titulo e descrição da página
+     */
+    $title = "BUSCADOR DE RESTAURANTES";
+    $description = "BUSCADOR DE RESTAURANTES";
+?>
+
 <div id="map"></div>
 <script src="js/script.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjIS5JjMOF-j4OFdyxMVkFpbW4i5ac4hc&callback=initMap"></script>

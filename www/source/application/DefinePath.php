@@ -2,7 +2,7 @@
 define("ROOT_PATH", __DIR__ . "/../..");
 
 define("APP_PATH",    __DIR__);
-define("SOURCE_PATH", __DIR__   . "/..");
+define("SOURCE_PATH", __DIR__   . "/../");
 define("VIEWS_PATH",  __DIR__   . "/../views");
 define("HTML_PATH",   VIEWS_PATH. "/html");
 

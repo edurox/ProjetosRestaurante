@@ -1,3 +1,6 @@
+<title><?= $controller->pageTitle ?></title>
+<meta charset='utf-8'>
+
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--  CSS e JAVASCRIPTS(bootstrap) -->
