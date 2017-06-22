@@ -1,8 +1,8 @@
 <?php
-require_once APP_PATH . "/Pessoa.php";
+require_once APP_PATH . "/Restaurante.php";
 
-$pessoa = new Pessoa();
-$pessoa->cadastro();
+$Restaurante = new Restaurante();
+$Restaurante->cadastro();
 
 // Redireciona para algum lugar
 echo "<script>alert('Cadastro realizado com sucesso!')</script>";

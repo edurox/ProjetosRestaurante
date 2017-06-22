@@ -1,20 +1,24 @@
 <?php
-  require_once APP_PATH . "/Connection.php";
+  require_once APP_PATH . "/Database.php";
   require_once APP_PATH . "/Default.php";
 
-  class Pessoa {
+  class Restaurante {
     private $nome, $cpf, $telefone, $email, $ender;
+    private $con;
 
     public function __construct() {
-      $this->setNome();
-      $this->setCpf();
-      $this->setTelefone();
-      $this->setEmail();
-      $this->setEnder();
+        $this->setNome();
+        $this->setCpf();
+        $this->setTelefone();
+        $this->setEmail();
+        $this->setEnder();
+
+        $database = new Database();
+        $this->con = $database->connect();
     }
 
     public function cadastro() {
-        $count = $con->exec("INSERT INTO
+        $count = $this->con->exec("INSERT INTO
                           `Restaurante`(
                             `nome_restaurante`,
                             `CPF_CNPJ`,
@@ -29,8 +33,17 @@
                               '$this->telefone',
                               '$this->email')") or die(print_r($con->errorInfo(), true));
 
-
         echo "Cadastro de $this->nome realizado com sucesso";
+    }
+
+    public function getAll() {
+        $select = "SELECT * FROM Restaurante";
+
+        foreach( $this->con->query($select) as $row ) {
+            $restaurantes[] = $row;
+        }
+
+        return $restaurantes;
     }
 
 
@@ -39,7 +52,8 @@
   	}
 
   	public function setNome(){
-  		$this->nome = $_POST['name'];
+        if( isset($_POST['name']) )
+  		    $this->nome = $_POST['name'];
   	}
 
   	public function getCpf(){
@@ -47,7 +61,8 @@
   	}
 
   	public function setCpf(){
-  		$this->cpf = $_POST['cpf'];
+        if( isset($_POST['cpf']) )
+  		    $this->cpf = $_POST['cpf'];
   	}
 
   	public function getTelefone(){
@@ -55,7 +70,8 @@
   	}
 
   	public function setTelefone(){
-  		$this->telefone = $_POST['telefone'];
+        if( isset($_POST['telefone']) )
+      		$this->telefone = $_POST['telefone'];
   	}
 
   	public function getEmail(){
@@ -63,7 +79,8 @@
   	}
 
   	public function setEmail(){
-  		$this->email = $_POST['email'];
+        if( isset($_POST['email']) )
+      		$this->email = $_POST['email'];
   	}
 
   	public function getEnder(){
@@ -71,7 +88,8 @@
   	}
 
   	public function setEnder(){
-  		$this->ender = $_POST['ender'];
+        if( isset($_POST['ender']) )
+      		$this->ender = $_POST['ender'];
   	}
 
   }

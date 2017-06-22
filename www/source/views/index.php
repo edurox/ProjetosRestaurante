@@ -1,5 +1,5 @@
 <?php
-    // require_once DATABASE_PATH . '/Connection.php';
+    require_once APP_PATH . '/Restaurante.php';
 
     /**
      *  Titulo e descrição da página
@@ -7,8 +7,53 @@
     $title = "BUSCADOR DE RESTAURANTES";
     $description = "BUSCADOR DE RESTAURANTES";
 ?>
+
 <div id="map"></div>
-<script src="<?= JS_URL ?>/script.js"></script>
+
+<?php
+    $restauranteObj = new Restaurante();
+    $restaurantes = $restauranteObj->getAll();
+?>
+
+<script>
+function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: -34.397, lng: 150.644},
+		zoom: 6,
+		scrollwheel: false
+	});
+	var infoWindow = new google.maps.InfoWindow({map: map});
+
+    var latLng = new Array();
+
+	// Try HTML5 geolocation.
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function(position) {
+			var pos = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+
+			infoWindow.setPosition(pos);
+			infoWindow.setContent('Location found.');
+			map.setCenter(pos);
+		}, function() {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
+	} else {
+		// Browser doesn't support Geolocation
+		handleLocationError(false, infoWindow, map.getCenter());
+	}
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+	infoWindow.setPosition(pos);
+	infoWindow.setContent(browserHasGeolocation ?
+		'Error: The Geolocation service failed.' :
+		'Error: Your browser doesn\'t support geolocation.');
+}
+</script>
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjIS5JjMOF-j4OFdyxMVkFpbW4i5ac4hc&callback=initMap"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
