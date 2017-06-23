@@ -3,7 +3,7 @@
 ?>
 <div class="container">
 	<h2>Cadastro do Cardapio</h2>
-	<form class="form-control" role="form" method="post" action="valida-cadastro">
+	<form class="form-control" role="form" method="post" action="valida-cardapio">
 
     <div class="form-group">
       <label for="name" class="col-sm-5 control-label">Nome da empresa</label>

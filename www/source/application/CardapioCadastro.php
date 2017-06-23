@@ -20,13 +20,13 @@
                           `Cardapio`(
                             `id_restaurante`,
                             `nome_prato`,
-                            `preco`,
+                            `preco`
                           )
                             VALUES(
                               '$this->restid',
                               '$this->nome',
                               '$this->preco'
-                              )") or die(print_r($con->errorInfo(), true));
+                            )") or die(print_r($this->con->errorInfo(), true));
 
         echo "Cadastro de $this->nome realizado com sucesso";
     }
@@ -55,7 +55,7 @@
   		return $this->nome;
   	}
 
-  	public function setCpf(){
+  	public function setNome(){
         if( isset($_POST['prodpromo']) )
   		    $this->nome = $_POST['prodpromo'];
   	}
