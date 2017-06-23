@@ -35,7 +35,7 @@ function initMap() {
 			};
 
 			infoWindow.setPosition(pos);
-			infoWindow.setContent('Location found.');
+			infoWindow.setContent('Você está aqui.');
 			map.setCenter(pos);
 		}, function() {
 			handleLocationError(true, infoWindow, map.getCenter());
@@ -60,8 +60,8 @@ function setMarkers(map){
         <?php
             foreach($restaurantes as $key => $row) { ?>
                 [
-                    '<?= $row["nome_restaurante"] ?>',
-                    '<div id="content">'+ '<h1 style="font-size:15px"><?= $row['nome_restaurante'] ?></h1>'+ '<p><?= utf8_encode($row['endereco']) ?></p>'+ '</div>',
+                    '<?= utf8_encode($row["nome_restaurante"]) ?>',
+                    '<div id="content">'+ '<h1 style="font-size:15px"><?= utf8_encode($row['nome_restaurante']) ?></h1>'+ '<p>Localização: <?= utf8_encode($row['endereco']) ?></p>'+ '</div>',
                     <?= $row["latitude"] ?>,
                     <?= $row["longitude"] ?>,
                     1
@@ -87,8 +87,6 @@ function setMarkers(map){
         }) (marker, i));
         Markers[locations[i][4]] = marker;
     }
-
-
 }
 
 </script>
