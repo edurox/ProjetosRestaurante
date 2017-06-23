@@ -63,7 +63,7 @@ function setMarkers(map){
             foreach($restaurantes as $key => $row) { ?>
                 [
                     '<?= utf8_encode($row["nome_restaurante"]) ?>',
-                    '<div id="content">'+ '<h1 style="font-size:15px"><?= utf8_encode($row['nome_restaurante']) ?></h1>'+ '<p>Localização: <?= utf8_encode($row['endereco']) ?></p>'+ '</div>',
+                    '<div id="content">'+ '<h1 style="font-size:15px"><?= utf8_encode($row['nome_restaurante']) ?></h1>'+ '<p>Localização: <?= utf8_encode($row['endereco']) ?></p> <a href="<?= SITE_URL ?>/restaurante/listar-cardapio?id=<?= $row['id_restaurante'] ?>">Clique aqui para ver o cardápio</a> </div>',
                     <?= $row["latitude"] ?>,
                     <?= $row["longitude"] ?>,
                     1

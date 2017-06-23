@@ -26,8 +26,11 @@ class RequestController {
 	}
 
 	public function getRequest() {
-
 		$urlRequest = implode("/", $this->paramArray);
+
+		if( strpos( $urlRequest, "?" ) !== false ) {
+			$urlRequest = substr($urlRequest, 0, strpos($urlRequest, "?"));
+		}
 
 		ob_start();
 		// se primeira posição estiver em branco é a pagina inicial

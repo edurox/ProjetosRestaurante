@@ -31,14 +31,14 @@
         echo "Cadastro de $this->nome realizado com sucesso";
     }
 
-    public function getAll() {
-        $select = "SELECT * FROM Restaurante";
+    public function getById() {
+        $select = "SELECT * FROM Cardapio WHERE id_restaurante = " . $_GET['id'];
 
         foreach( $this->con->query($select) as $row ) {
-            $restaurantes[] = $row;
+            $cardapio[] = $row;
         }
 
-        return $restaurantes;
+        return $cardapio;
     }
 
 
