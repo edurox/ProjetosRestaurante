@@ -19,12 +19,12 @@
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: -34.397, lng: 150.644},
-		zoom: 6,
+		zoom: 12,
 		scrollwheel: false
 	});
 	var infoWindow = new google.maps.InfoWindow({map: map});
 
-    var latLng = new Array();
+    setMarkers(map);
 
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
@@ -52,6 +52,45 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		'Error: The Geolocation service failed.' :
 		'Error: Your browser doesn\'t support geolocation.');
 }
+
+function setMarkers(map){
+    var Markers = {};
+
+    var locations = [
+        <?php
+            foreach($restaurantes as $key => $row) { ?>
+                [
+                    '<?= $row["nome_restaurante"] ?>',
+                    '<div id="content">'+ '<h1 style="font-size:15px"><?= $row['nome_restaurante'] ?></h1>'+ '<p><?= utf8_encode($row['endereco']) ?></p>'+ '</div>',
+                    <?= $row["latitude"] ?>,
+                    <?= $row["longitude"] ?>,
+                    1
+                ],
+        <?php
+            }
+        ?>
+    ];
+    infowindow = new google.maps.InfoWindow();
+
+    for(i=0; i<locations.length; i++) {
+        var position = new google.maps.LatLng(locations[i][2], locations[i][3]);
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations[i][1]);
+                infowindow.setOptions({maxWidth: 200});
+                infowindow.open(map, marker);
+            }
+        }) (marker, i));
+        Markers[locations[i][4]] = marker;
+    }
+
+
+}
+
 </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjIS5JjMOF-j4OFdyxMVkFpbW4i5ac4hc&callback=initMap"></script>
