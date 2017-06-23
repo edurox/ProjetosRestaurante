@@ -13,6 +13,8 @@
 <?php
     $restauranteObj = new Restaurante();
     $restaurantes = $restauranteObj->getAll();
+
+    print_r($restaurantes);
 ?>
 
 <script>
